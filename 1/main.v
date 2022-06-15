@@ -6,10 +6,11 @@ fn main() {
 		port: 3306
 		username: 'root'
 		password: ''
-		dbname: 'mysql'
+		dbname: 'vlangtest'
 	}
 	conn.connect()?
-	res := conn.query('show tables')?
+	res := conn.query('SELECT name FROM user WHERE id=0')?
+	println(res)
 	for row in res.rows() {
 		println(row.vals.join(', '))
 	}
