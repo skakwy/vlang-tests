@@ -1,16 +1,16 @@
 import mysql
-
+import ui
 fn main() {
+	
 	mut conn := mysql.Connection{
-		host: 'localhost'
+		host: '192.168.111.96'
 		port: 3306
-		username: 'root'
-		password: ''
-		dbname: 'vlangtest'
+		username: 'user'
+		password: '3142'
+		dbname: 'vlangTest'
 	}
 	conn.connect()?
-	res := conn.query('SELECT name FROM user WHERE id=0')?
-	println(res)
+	res := conn.query('SELECT * FROM user WHERE id=0')?
 	for row in res.rows() {
 		println(row.vals.join(', '))
 	}
